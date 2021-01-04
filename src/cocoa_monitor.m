@@ -147,8 +147,13 @@ static GLFWvidmode vidmodeFromCGDisplayMode(CGDisplayModeRef mode,
                                             double fallbackRefreshRate)
 {
     GLFWvidmode result;
-    result.width = (int) CGDisplayModeGetWidth(mode);
-    result.height = (int) CGDisplayModeGetHeight(mode);
+
+    result.width = (int) CGDisplayModeGetPixelWidth(mode);
+    result.height = (int) CGDisplayModeGetPixelHeight(mode);
+
+    // result.width = (int) CGDisplayModeGetWidth(mode);
+    // result.height = (int) CGDisplayModeGetHeight(mode);
+
     result.refreshRate = (int) round(CGDisplayModeGetRefreshRate(mode));
 
     if (result.refreshRate == 0)
